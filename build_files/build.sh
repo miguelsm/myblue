@@ -2,6 +2,8 @@
 
 set -ouex pipefail
 
+mkdir -p /nix
+
 ### Install packages
 
 # Packages can be installed from any enabled yum repo on the image.
@@ -10,7 +12,9 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 # this installs a package from fedora repos
-dnf5 install -y tmux 
+dnf5 install -y alacritty emacs
+dnf5 autoremove -y
+dnf5 clean all -y
 
 # Use a COPR Example:
 #
@@ -21,4 +25,4 @@ dnf5 install -y tmux
 
 #### Example for enabling a System Unit File
 
-systemctl enable podman.socket
+# systemctl enable podman.socket
