@@ -11,10 +11,15 @@ mkdir -p /nix
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/43/x86_64/repoview/index.html&protocol=https&redirect=1
 
+# Ensure info directory index exists to prevent scriptlet failure
+mkdir -p /usr/share/info
+if [ ! -f /usr/share/info/dir ]; then
+    touch /usr/share/info/dir
+fi
+
 # this installs a package from fedora repos
 dnf5 install -y alacritty emacs
-dnf5 autoremove -y
-dnf5 clean all -y
+dnf5 clean all
 
 # Use a COPR Example:
 #
