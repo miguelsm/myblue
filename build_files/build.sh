@@ -18,7 +18,7 @@ if [ ! -f /usr/share/info/dir ]; then
 fi
 
 # this installs a package from fedora repos
-dnf5 install -y alacritty emacs
+dnf5 install -y alacritty emacs raysession qtpy
 dnf5 clean all
 
 # Use a COPR Example:
