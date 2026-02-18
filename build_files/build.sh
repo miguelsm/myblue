@@ -21,15 +21,6 @@ fi
 dnf5 install -y alacritty emacs raysession qtpy
 dnf5 clean all
 
-# -----------------------------
-# Kernel power management fix
-# -----------------------------
-# Workaround for AMD USB xHCI runtime PM bug on Framework 13:
-# kernel spammed "xhci_hcd 0000:c1:00.3: Refused to change power state from D0 to D3hot"
-# causing periodic freezes. To re-test in the future, temporarily remove this arg
-# and watch: journalctl -k -b -f | grep -i d3hot
-rpm-ostree kargs --append=pcie_aspm=off
-
 # Use a COPR Example:
 #
 # dnf5 -y copr enable ublue-os/staging

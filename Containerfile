@@ -5,6 +5,15 @@ COPY build_files /
 # Base Image
 FROM ghcr.io/ublue-os/bluefin-dx:stable
 
+# -----------------------------
+# Kernel power management fix
+# -----------------------------
+# Workaround for AMD USB xHCI runtime PM bug on Framework 13:
+# kernel spammed "xhci_hcd 0000:c1:00.3: Refused to change power state from D0 to D3hot"
+# causing periodic freezes. To re-test in the future, temporarily remove this line
+# and watch: journalctl -k -b -f | grep -i d3hot
+COPY system_files/ /
+
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
 # FROM ghcr.io/ublue-os/bluefin-nvidia:stable
