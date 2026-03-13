@@ -1,2 +1,7 @@
-kargs = ["pcie_aspm=off"]
+# Hardware stability workarounds for Framework 13 AMD
+kargs = [
+    "pcie_aspm=off",          # Fixes XHCI controller power state refusals (D0->D3hot)
+    "ucsi_acpi.blacklist=1",  # Prevents kernel stalls from failed USB-C PD communication
+    "usbcore.autosuspend=-1"  # Stops infinite USB device reset loops
+]
 match-architectures = ["x86_64"]
