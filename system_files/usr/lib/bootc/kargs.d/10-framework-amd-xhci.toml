@@ -1,5 +1,6 @@
 # Hardware stability workarounds for Framework 13 AMD
 kargs = [
+    "amdgpu.abmlevel=0",      # Prevents GPU "flip_done" timeouts and DMCUB errors
     "pcie_aspm=off",          # Fixes XHCI controller power state refusals (D0->D3hot)
     "ucsi_acpi.blacklist=1",  # Prevents kernel stalls from failed USB-C PD communication
     "usbcore.autosuspend=-1"  # Stops infinite USB device reset loops
